@@ -15,9 +15,10 @@ import java.util.stream.Collectors;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class ItemServiceImpl implements ItemService{
+public class ItemServiceImpl implements ItemService {
 
     private final ItemRepository itemRepository;
+
     @Override
     public Collection<Item> getItems(long userId) {
         return itemRepository.getItems(userId);

@@ -2,13 +2,9 @@ package ru.practicum.shareit.item.model;
 
 import lombok.*;
 import lombok.extern.jackson.Jacksonized;
-import ru.practicum.shareit.request.model.ItemRequest;
-import ru.practicum.shareit.user.model.User;
 import ru.practicum.shareit.validator.ValidItemsDescription;
 import ru.practicum.shareit.validator.ValidItemsName;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 /**
  * id — уникальный идентификатор вещи;

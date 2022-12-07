@@ -7,13 +7,12 @@ import ru.practicum.shareit.exceptions.NoSuchUserException;
 import ru.practicum.shareit.item.dto.ItemDtoToUpdate;
 import ru.practicum.shareit.item.model.Item;
 import ru.practicum.shareit.user.repository.UserRepository;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Repository
 @RequiredArgsConstructor
-public class ItemInMemoryRepository implements ItemRepository{
+public class ItemInMemoryRepository implements ItemRepository {
     Map<Long, List<Item>> usersItemsMap = new HashMap<>();
     Long itemIdCounter = 0L;
     private final UserRepository userRepository;
@@ -89,13 +88,13 @@ public class ItemInMemoryRepository implements ItemRepository{
         Item itemForUpdate = findItemByUserAndId(userId, itemId);
         if (itemForUpdate != null) {
             usersItemsMap.get(userId).remove(itemForUpdate);
-            if (item.getName() != null){
+            if (item.getName() != null) {
                 itemForUpdate.setName(item.getName());
             }
-            if (item.getDescription() != null){
+            if (item.getDescription() != null) {
                 itemForUpdate.setDescription(item.getDescription());
             }
-            if (item.isAvailable() != null){
+            if (item.isAvailable() != null) {
                 itemForUpdate.setAvailable(item.isAvailable());
             }
             if (item.getRequestId() != null) {

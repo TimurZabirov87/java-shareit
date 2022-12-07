@@ -4,14 +4,6 @@ import lombok.*;
 import lombok.extern.jackson.Jacksonized;
 import ru.practicum.shareit.validator.ValidItemsDescription;
 import ru.practicum.shareit.validator.ValidItemsName;
-
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-
-/**
- * TODO Sprint add-controllers.
- */
-
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor
@@ -27,6 +19,7 @@ public class ItemDto {
     @NonNull
     Boolean available;
     Long requestId;
+
     public ItemDto(String name, String description, Boolean available, Long requestId) {
         this.name = name;
         this.description = description;

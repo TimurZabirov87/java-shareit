@@ -12,7 +12,7 @@ import java.util.*;
 
 @Repository
 @RequiredArgsConstructor
-public class UserInMemoryRepository implements UserRepository{
+public class UserInMemoryRepository implements UserRepository {
 
     Map<Long, User> allUsersMap = new HashMap<>();
     Long userIdCounter = 0L;
@@ -41,7 +41,7 @@ public class UserInMemoryRepository implements UserRepository{
     public User update(long userId, User user) {
         User currentlyUser = findById(userId);
         if (currentlyUser != null) {
-            if(user.getName() != null){
+            if (user.getName() != null) {
                 currentlyUser.setName(user.getName());
             }
             if (user.getEmail() != null) {
