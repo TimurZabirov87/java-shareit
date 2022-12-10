@@ -22,17 +22,17 @@ import ru.practicum.shareit.validator.ValidItemsName;
 @Builder
 @Jacksonized
 public class Item {
-    Long id;
+    private Long id;
     @NonNull
     @ValidItemsName
-    String name;
+    private String name;
     @ValidItemsDescription
-    String description;
+    private String description;
     @NonNull
-    Boolean available;
+    private Boolean available;
     @NonNull
-    Long ownerId;
-    Long requestId;
+    private Long ownerId;
+    private Long requestId;
 
     public Item(@NonNull String name, String description, Boolean available, @NonNull Long userId, Long requestId) {
         this.name = name;

@@ -11,15 +11,15 @@ import ru.practicum.shareit.validator.ValidItemsToUpdateName;
 @Builder
 public class ItemDtoToUpdate {
 
-    Long id;
+    private Long id;
 
     @ValidItemsToUpdateName
-    String name;
+    private String name;
     @ValidItemsToUpdateDescription
-    String description;
+    private String description;
 
-    Boolean available;
-    Long requestId;
+    private Boolean available;
+    private Long requestId;
 
     public Boolean isAvailable() {
         return available;

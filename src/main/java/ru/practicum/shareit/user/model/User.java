@@ -10,10 +10,10 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class User {
-    Long id;
+    private Long id;
     @NotBlank
-    String name;
+    private String name;
     @NotBlank
     @Email
-    String email;
+    private String email;
 }

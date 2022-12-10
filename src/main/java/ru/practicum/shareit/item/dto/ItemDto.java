@@ -11,15 +11,15 @@ import ru.practicum.shareit.validator.ValidItemsName;
 @Jacksonized
 @Builder
 public class ItemDto {
-    Long id;
+    private Long id;
     @NonNull
     @ValidItemsName
-    String name;
+    private String name;
     @ValidItemsDescription
-    String description;
+    private String description;
     @NonNull
-    Boolean available;
-    Long requestId;
+    private Boolean available;
+    private Long requestId;
 
     public ItemDto(String name, String description, Boolean available, Long requestId) {
         this.name = name;
