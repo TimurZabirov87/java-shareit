@@ -2,7 +2,6 @@ package ru.practicum.shareit.entities.item.comment.dto;
 
 import lombok.*;
 import lombok.extern.jackson.Jacksonized;
-import ru.practicum.shareit.entities.item.comment.model.Comment;
 import java.time.LocalDateTime;
 
 @Data
