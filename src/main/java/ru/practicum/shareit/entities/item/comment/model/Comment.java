@@ -23,7 +23,7 @@ public class Comment {
     @Column (name = "id", nullable = false, updatable = false, unique = true)
     private Long id;
     @ValidCommentsText
-    @Column (name = "text", nullable = false, length=512)
+    @Column (name = "text", nullable = false, length = 512)
     private String text;
     @ManyToOne
     @JoinColumn (name = "item_id", referencedColumnName = "id")
