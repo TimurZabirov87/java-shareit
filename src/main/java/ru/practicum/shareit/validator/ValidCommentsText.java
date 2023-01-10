@@ -6,11 +6,11 @@ import java.lang.annotation.*;
 
 @Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = ItemsDescriptionValidator.class)
+@Constraint(validatedBy = CommentsTextValidator.class)
 @Documented
-public @interface ValidItemsDescription {
+public @interface ValidCommentsText {
 
-    String message() default "Description is invalid: cannot be empty or blank";
+    String message() default "Text is invalid: cannot be empty or blank";
 
     Class<?>[] groups() default { };
 
