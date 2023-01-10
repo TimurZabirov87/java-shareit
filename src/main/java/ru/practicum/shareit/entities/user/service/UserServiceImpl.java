@@ -10,8 +10,6 @@ import ru.practicum.shareit.entities.user.dto.UserDtoToUpdate;
 import ru.practicum.shareit.entities.user.model.User;
 import ru.practicum.shareit.entities.user.repository.UserRepository;
 import ru.practicum.shareit.exceptions.NoSuchUserException;
-
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,7 +32,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto getUserById(long userId) {
         User user = userRepository.findById(userId)
-                                  .orElseThrow(() ->new NoSuchUserException("User with id: " + userId + " not found."));
+                                  .orElseThrow(() -> new NoSuchUserException("User with id: " + userId + " not found."));
         return UserDtoMapper.toUserDto(user);
     }
 

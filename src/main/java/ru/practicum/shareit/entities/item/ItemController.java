@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.*;
 import ru.practicum.shareit.entities.item.comment.dto.CommentDto;
 import ru.practicum.shareit.entities.item.dto.ItemDtoToUpdate;
 import ru.practicum.shareit.entities.item.dto.ItemDto;
-import ru.practicum.shareit.entities.item.dto.ItemDtoWithBookings;
 import ru.practicum.shareit.entities.item.dto.ItemDtoWithBookingsAndComments;
 import ru.practicum.shareit.entities.item.service.ItemService;
 

@@ -129,7 +129,7 @@ public class ItemServiceImpl implements ItemService {
         LocalDateTime now = LocalDateTime.now();
 
         if (item.getOwner().getId() == userId) {
-            if(!allItemsBookings.isEmpty()) {
+            if (!allItemsBookings.isEmpty()) {
 
                 BookingByEndComparator bookingByEndComparator = new BookingByEndComparator();
                 BookingByStartComparator bookingByStartComparator = new BookingByStartComparator();
@@ -178,7 +178,7 @@ public class ItemServiceImpl implements ItemService {
         }
     }
 
-    private Collection<ItemDto> getUsersItemsForUpdateAndDelete (long userId) {
+    private Collection<ItemDto> getUsersItemsForUpdateAndDelete(long userId) {
         return getItems(userId).stream()
                 .map(ItemDtoMapper::toItemDto)
                 .collect(Collectors.toList());

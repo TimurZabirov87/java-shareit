@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class BookingServiceImpl implements BookingService{
+public class BookingServiceImpl implements BookingService {
 
     private final UserRepository userRepository;
     private final ItemRepository itemRepository;
@@ -61,7 +61,7 @@ public class BookingServiceImpl implements BookingService{
         Booking booking = bookingRepository.findById(bookingId)
                 .orElseThrow(() -> new NoSuchBookingException("Booking with id: " + bookingId + " not found."));
 
-        if(booking.getStatus().equals(BookingStatus.APPROVED) && approved) {
+        if (booking.getStatus().equals(BookingStatus.APPROVED) && approved) {
             throw new DoubleApproveException("This booking has already been approved");
         }
 

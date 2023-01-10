@@ -20,20 +20,20 @@ import java.time.LocalDateTime;
 public class Comment {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column(name="id", nullable = false, updatable = false, unique = true)
+    @Column (name = "id", nullable = false, updatable = false, unique = true)
     private Long id;
     @ValidCommentsText
-    @Column(name = "text", nullable=false, length=512)
+    @Column (name = "text", nullable = false, length=512)
     private String text;
     @ManyToOne
-    @JoinColumn (name="item_id", referencedColumnName = "id")
+    @JoinColumn (name = "item_id", referencedColumnName = "id")
     @NonNull
     private Item item;
     @ManyToOne
-    @JoinColumn (name="author_id", referencedColumnName = "id")
+    @JoinColumn (name = "author_id", referencedColumnName = "id")
     @NonNull
     private User author;
-    @Column(name = "created", nullable=false)
+    @Column (name = "created", nullable = false)
     private LocalDateTime created;
 
     @Override

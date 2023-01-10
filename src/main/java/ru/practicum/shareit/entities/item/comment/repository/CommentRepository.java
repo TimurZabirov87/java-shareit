@@ -7,7 +7,9 @@ import ru.practicum.shareit.entities.user.model.User;
 import java.util.List;
 
 public interface CommentRepository extends JpaRepository<Comment, Long> {
+
     List<Comment> findAllByItemOrderById(Item item);
+
     List<Comment> findAllByAuthorOrderById(User author);
 }
 

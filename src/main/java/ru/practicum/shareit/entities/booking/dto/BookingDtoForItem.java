@@ -19,6 +19,7 @@ public class BookingDtoForItem {
     private LocalDateTime end;
     private Long bookerId;
     private BookingStatus status;
+
     public BookingDtoForItem(LocalDateTime start, LocalDateTime end) {
         this.start = start;
         this.end = end;

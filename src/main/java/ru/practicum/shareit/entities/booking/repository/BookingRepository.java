@@ -43,11 +43,11 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
             "where b.item.owner = :owner and b.start > :now order by b.start desc ")
     List<Booking> findFutureByOwner(@Param("owner") User owner, @Param("now") LocalDateTime now);
 
-    List<Booking> findAllByBookerAndStatusOrderByStartDesc (User owner, BookingStatus status);
+    List<Booking> findAllByBookerAndStatusOrderByStartDesc(User owner, BookingStatus status);
 
     @Query("select b from Booking b " +
             "where b.item.owner = :owner and b.status = :status order by b.start desc ")
-    List<Booking> findAllByOwnerAndStatus (User owner, BookingStatus status);
+    List<Booking> findAllByOwnerAndStatus(User owner, BookingStatus status);
 
     List<Booking> findAllByItemOrderByStartDesc(Item item);
 

@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import ru.practicum.shareit.entities.user.dto.UserDto;
 import ru.practicum.shareit.entities.user.dto.UserDtoToUpdate;
 import ru.practicum.shareit.entities.user.service.UserService;
-import ru.practicum.shareit.entities.user.model.User;
-
 import java.util.Collection;
 
 

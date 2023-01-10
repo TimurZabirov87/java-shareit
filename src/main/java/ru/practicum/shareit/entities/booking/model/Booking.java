@@ -32,7 +32,7 @@ import java.time.LocalDateTime;
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id", nullable = false, updatable = false, unique = true)
+    @Column(name = "id", nullable = false, updatable = false, unique = true)
     private Long id;
     @NonNull
     @Column(name = "start_date")
@@ -41,10 +41,10 @@ public class Booking {
     @Column(name = "end_date")
     private LocalDateTime end;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn (name="item_id", nullable = false)
+    @JoinColumn (name = "item_id", nullable = false)
     private Item item;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn (name="booker_id", nullable = false)
+    @JoinColumn (name = "booker_id", nullable = false)
     private User booker;
     private BookingStatus status;
 

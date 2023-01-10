@@ -6,7 +6,6 @@ import ru.practicum.shareit.entities.item.comment.model.Comment;
 import ru.practicum.shareit.entities.user.model.User;
 import ru.practicum.shareit.validator.ValidItemsDescription;
 import ru.practicum.shareit.validator.ValidItemsName;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -23,14 +22,15 @@ import java.util.List;
 
 @Entity
 @Table(name = "items", schema = "public")
-@Getter @Setter
+@Getter
+@Setter
 @RequiredArgsConstructor
 @AllArgsConstructor
 
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id", nullable = false, updatable = false, unique = true)
+    @Column(name = "id", nullable = false, updatable = false, unique = true)
     private Long id;
     @Column(name = "name", nullable = false)
     @ValidItemsName
