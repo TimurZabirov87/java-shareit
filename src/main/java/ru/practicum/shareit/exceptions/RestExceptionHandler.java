@@ -14,6 +14,7 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import javax.validation.ConstraintViolationException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,23 +26,39 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler({ NoSuchUserException.class,
                         NoSuchItemException.class,
                         NoSuchItemRequestException.class,
-                        NoSuchBookingException.class,})
+                        NoSuchBookingException.class})
     protected ResponseEntity<ApiError> handleEntityNotFoundEx(RuntimeException ex, WebRequest request) {
         ApiError apiError = new ApiError("Entity Not Found Exception", ex.getMessage());
 
         return new ResponseEntity<>(apiError, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler({ DataException.class})
+    @ExceptionHandler({ DataException.class,
+                        ItemUnavailableException.class,
+                        DoubleApproveException.class,
+                        CommentWithoutBookingException.class,
+                        BookingTimeException.class})
     protected ResponseEntity<ApiError> handleDataEx(RuntimeException ex, WebRequest request) {
         ApiError apiError = new ApiError("Request Data Exception", ex.getMessage());
+        return new ResponseEntity<>(apiError, BAD_REQUEST);
+    }
+
+    @ExceptionHandler({ UnsupportedStateException.class,})
+    protected ResponseEntity<ApiError> handleUnsupportedStateEx(RuntimeException ex, WebRequest request) {
+        ApiError apiError = new ApiError(ex.getMessage(), ex.getMessage());
+        return new ResponseEntity<>(apiError, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler({ConstraintViolationException.class})
+    public ResponseEntity<ApiError> handleInvalidParameterException(RuntimeException ex) {
+        ApiError apiError = new ApiError("Constraint Violation Exception", ex.getMessage());
         return new ResponseEntity<>(apiError, BAD_REQUEST);
     }
 
     @ExceptionHandler({ DuplicateEmailException.class})
     protected ResponseEntity<ApiError> handleDuplicateEmailEx(RuntimeException ex, WebRequest request) {
         ApiError apiError = new ApiError("Duplicate E-mail Exception", ex.getMessage());
-        return new ResponseEntity<>(apiError, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(apiError, HttpStatus.CONFLICT);
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
@@ -95,7 +112,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         ApiError apiError = new ApiError();
         apiError.setMessage(String.format("The parameter '%s' of value '%s' could not be converted to type '%s'",
                 ex.getName(), ex.getValue(), ex.getRequiredType().getSimpleName()));
-        apiError.setDebugMessage(ex.getMessage());
+        apiError.setError(ex.getMessage());
 
         return new ResponseEntity<>(apiError, BAD_REQUEST);
     }
