@@ -111,10 +111,10 @@ public class BookingServiceImpl implements BookingService {
                 result = bookingRepository.findCurrentByBooker(booker, requestTime);
                 break;
             case PAST:
-                result = bookingRepository.findPastByBooker(booker, requestTime);
+                result = bookingRepository.findAllByBookerAndEndBeforeOrderByStartDesc(booker, requestTime);
                 break;
             case FUTURE:
-                result = bookingRepository.findFutureByBooker(booker, requestTime);
+                result = bookingRepository.findAllByBookerAndStartAfterOrderByStartDesc(booker, requestTime);
                 break;
             case WAITING:
                 result = bookingRepository.findAllByBookerAndStatusOrderByStartDesc(booker, BookingStatus.WAITING);
@@ -193,8 +193,8 @@ public class BookingServiceImpl implements BookingService {
             return;
         }
 
-        for (Booking booking2 : bookingList) {
-            boolean isNoIntersections = isNoBookingTimeIntersections(booking, booking2);
+        for (Booking bookingInList : bookingList) {
+            boolean isNoIntersections = isNoBookingTimeIntersections(booking, bookingInList);
             if (!isNoIntersections) {
                 throw new BookingTimeException("Item with id: " + booking.getItem().getId() + " unavailable at this time.");
             }
